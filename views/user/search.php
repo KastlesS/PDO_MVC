@@ -89,13 +89,13 @@ if (isset($_REQUEST["evento"])) {
                 </thead>
                 <tbody>
             <?php foreach ($users as $user) :
-                $id = $user["id"];
+                $id = $user->id;
             ?>
                  <tr>
-                    <th scope="row"><?= $user["id"] ?></th>
-                    <td><?= $user["usuario"] ?></td>
-                    <td><?= $user["name"] ?></td>
-                    <td><?= $user["email"] ?></td>
+                    <th scope="row"><?= $user->id ?></th>
+                    <td><?= $user->usuario ?></td>
+                    <td><?= $user->name ?></td>
+                    <td><?= $user->email ?></td>
                     <td><a class="btn btn-danger" href="index.php?tabla=user&accion=borrar&id=<?= $id?>"><i class="fa fa-trash"></i> Borrar</a></td>
                     <td><a class="btn btn-success" href="index.php?tabla=user&accion=editar&id=<?= $id?>"><i class="fas fa-pencil-alt"></i> Editar</a></td>
                 </tr>

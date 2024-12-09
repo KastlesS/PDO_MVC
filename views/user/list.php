@@ -37,16 +37,17 @@
                 </tr>
             </thead>
             <tbody>
-                <?php foreach ($users as $user) :
-                    $id = $user["id"];
-                    $nombre = $user["name"];
-                    $usuario = $user["usuario"];
+                <?php 
+                foreach ($users as $user) :
+                    $id = $user->id;
+                    $nombre = $user->name;
+                    $usuario = $user->usuario;
                 ?>
                 <tr>
-                <th scope="row"><?= $user["id"] ?></th>
-                <td><?= $user["usuario"] ?></td>
-                <td><?= $user["name"] ?></td>
-                <td><?= $user["email"] ?></td>
+                <th scope="row"><?= $user->id ?></th>
+                <td><?= $user->usuario ?></td>
+                <td><?= $user->name ?></td>
+                <td><?= $user->email ?></td>
                 <td><a class="btn btn-danger" href="index.php?tabla=user&accion=borrar&id=<?=$id?>&nombre=<?=$nombre?>&usuario=<?=$usuario?>"><i class="fa fa-trash"></i> Borrar</a></td>
                 <td><a class="btn btn-success" href="index.php?tabla=user&accion=editar&id=<?=$id?>"><i class="fas fa-pencil-alt"></i> Editar</a></td>
                 </tr>
