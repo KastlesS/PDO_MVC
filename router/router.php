@@ -12,14 +12,24 @@ function router (){
 
     $tablas=[
         "user"=>[//defino las acciones permitidas para esa tabla
-                "crear"=>"create.php",
-                "guardar"=>"store.php",
-                "editar"=>"edit.php",
-                "listar"=>"list.php",
-                "ver"=>"show.php",
-                "buscar"=>"search.php",
-                "borrar"=>"delete.php"
+            "crear"=>"create.php",
+            "guardar"=>"store.php",
+            "editar"=>"edit.php",
+            "listar"=>"list.php",
+            "ver"=>"show.php",
+            "buscar"=>"search.php",
+            "borrar"=>"delete.php"
         ],
+        "client"=>[
+            "crear"=>"create.php",
+            "guardar"=>"store.php",
+            "editar"=>"edit.php",
+            "listar"=>"list.php",
+            "ver"=>"show.php",
+            "buscar"=>"search.php",
+            "borrar"=>"delete.php"
+        ],
+
     ];
     $tabla= $_REQUEST["tabla"];
     if (!isset($tablas[$tabla])) return"views/404.php"; 

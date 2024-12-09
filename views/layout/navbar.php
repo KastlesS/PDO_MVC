@@ -14,6 +14,9 @@
               <li><a class="dropdown-item" href="index.php?tabla=user&accion=crear">Añadir</a></li>
               <li><a class="dropdown-item" href="index.php?tabla=user&accion=listar">Listar </a></li>
               <li><a class="dropdown-item" href="index.php?tabla=user&accion=buscar">Buscar </a></li>
+              <li><a class="dropdown-item" href="index.php?tabla=client&accion=crear">Añadir Cliente</a></li>
+              <li><a class="dropdown-item" href="index.php?tabla=client&accion=listar">Listar Cliente</a></li>
+              <li><a class="dropdown-item" href="index.php?tabla=client&accion=buscar">Buscar Cliente</a></li>
           </ul>
           </li>
           <li class="nav-item">
