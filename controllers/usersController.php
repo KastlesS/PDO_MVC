@@ -46,7 +46,7 @@ class UsersController {
         exit();
     }
 
-    public function buscar (string $usuario):array {
-        return $this->model->search ($usuario);
+    public function buscar (string $usuario, string $opcion, string $parametro):array {
+        return $this->model->search ($usuario,$opcion,$parametro);
     }
 }
