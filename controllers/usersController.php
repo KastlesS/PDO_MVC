@@ -45,4 +45,8 @@ class UsersController {
         header ($redireccion);
         exit();
     }
+
+    public function buscar (string $usuario):array {
+        return $this->model->search ($usuario);
+    }
 }

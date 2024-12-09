@@ -78,4 +78,14 @@ class UserModel{
             return false;
         }
     }
+
+    public function search (string $usuario):array{
+        $sentencia = $this->conexion->prepare("SELECT * FROM users WHERE usuario LIKE :usuario");
+        //ojo el si ponemos % siempre en comillas dobles "
+        $arrayDatos=[":usuario"=>"%$usuario%" ];
+        $resultado = $sentencia->execute($arrayDatos);
+        if (!$resultado) return [];
+        $users = $sentencia->fetchAll(PDO::FETCH_ASSOC);
+        return $users;
+    }
 }
