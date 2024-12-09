@@ -42,7 +42,7 @@ class ClientModel{
     }
 
     public function readAll():array{
-        $sql = "SELECT * FROM users";
+        $sql = "SELECT * FROM clients";
         $sentencia = $this->conexion->prepare($sql);
         $sentencia->execute();
         $usuarios = $sentencia->fetchAll(PDO::FETCH_OBJ);
@@ -50,7 +50,7 @@ class ClientModel{
     }
 
     public function delete (int $id):bool{
-        $sql="DELETE FROM users WHERE id =:id";
+        $sql="DELETE FROM clients WHERE id =:id";
         try {
             $sentencia = $this->conexion->prepare($sql);
             //devuelve true si se borra correctamente
@@ -63,17 +63,19 @@ class ClientModel{
         }
     }
 
-    public function edit (int $idAntiguo, array $arrayUsuario):bool{
+    public function edit (int $idAntiguo, array $user):bool{
         try {
-            $sql="UPDATE users SET name = :name, email=:email, ";
-            $sql.= "usuario = :usuario, password= :password ";
+            $sql="UPDATE clients SET idFiscal = :idFiscal, contact_name = :nombre, contact_email = :email, contact_phone_number = :tel, company_name = :comp, company_address = :compDir, company_phone_number = :compTel";
             $sql.= " WHERE id = :id;";
             $arrayDatos=[
                 ":id"=>$idAntiguo,
-                ":usuario"=>$arrayUsuario["usuario"],
-                ":password"=>$arrayUsuario["password"],
-                ":name"=>$arrayUsuario["name"],
-                ":email"=>$arrayUsuario["email"],
+                ":idFiscal"=>$user["idFiscal"],
+                ":nombre"=>$user["contact_name"],
+                ":email"=>$user["contact_email"],
+                ":tel"=>$user["contact_phone_number"],
+                ":comp"=>$user["company_name"],
+                ":compDir"=>$user["company_address"],
+                ":compTel"=>$user["company_phone_number"],
             ];
             $sentencia = $this->conexion->prepare($sql);
             return $sentencia->execute($arrayDatos);
@@ -98,7 +100,7 @@ class ClientModel{
                 $dato = $texto;
                 break;
         }
-        $sql="SELECT * FROM users WHERE $campo LIKE :dato";
+        $sql="SELECT * FROM clients WHERE $campo LIKE :dato";
         $sentencia = $this->conexion->prepare($sql);
         //ojo el si ponemos % siempre en comillas dobles "
         $arrayDatos=[":dato"=>$dato];

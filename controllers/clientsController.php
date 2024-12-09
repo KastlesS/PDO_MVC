@@ -28,8 +28,7 @@ class ClientsController {
     public function borrar(int $id): void{
         $borrado = $this->model->delete($id);
         $nombre = $_REQUEST['nombre'];
-        $usuario = $_REQUEST['usuario'];
-        $redireccion = "location:index.php?accion=listar&tabla=user&evento=borrar&id={$id}&nombre={$nombre}&usuario={$usuario}";
+        $redireccion = "location:index.php?accion=listar&tabla=client&evento=borrar&id={$id}&nombre={$nombre}";
         if ($borrado == false) $redireccion .= "&error=true";
         header($redireccion);
         exit();
@@ -38,7 +37,7 @@ class ClientsController {
     public function editar (int $id, array $arrayUser):void {
         $editadoCorrectamente=$this->model->edit ($id, $arrayUser);
         //lo separo para que se lea mejor en el word
-        $redireccion="location:index.php?tabla=user&accion=editar";
+        $redireccion="location:index.php?tabla=client&accion=editar";
         $redireccion.="&evento=modificar&id={$id}";
         $redireccion.=($editadoCorrectamente==false)?"&error=true":"";
         //vuelvo a la pagina donde estaba
