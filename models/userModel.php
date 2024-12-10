@@ -104,4 +104,17 @@ class UserModel{
         $users = $sentencia->fetchAll(PDO::FETCH_OBJ);
         return $users;
     }
+
+    public function login(string $usuario,string $password): ?stdClass{
+        $sentencia = $this->conexion->prepare("SELECT * FROM users WHERE usuario=:usuario and password=:contra");
+        $arrayDatos = [
+            ":usuario" => $usuario,
+            ":contra"=>$password
+        ];
+        $resultado = $sentencia->execute($arrayDatos);
+        if (!$resultado) return null;
+        $user = $sentencia->fetch(PDO::FETCH_OBJ);
+        //fetch duevelve el objeto stardar o false si no hay persona
+        return ($user == false) ? null : $user;
+    }
 }

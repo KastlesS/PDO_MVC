@@ -1,4 +1,6 @@
 <?php
+ob_start();
+require_once("config/sessionControl.php");
 require_once("router/router.php");
 require_once("views/layout/head.php");
 
