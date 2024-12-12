@@ -1,6 +1,5 @@
 <?php
-function is_valid_dni(string $dni): bool
-{
+function is_valid_dni(string $dni): bool{
     $letter = substr($dni, -1);
     $numbers = substr($dni, 0, -1);
     $patron = "/[0-9]{7,8}[A-Z]/";
@@ -11,8 +10,7 @@ function is_valid_dni(string $dni): bool
 }
 
 
-function HayNulos(array $camposNoNulos, array $arrayDatos): array
-{
+function HayNulos(array $camposNoNulos, array $arrayDatos): array{
     $nulos = [];
     foreach ($camposNoNulos as $index => $campo) {
         if (!isset($arrayDatos[$campo]) || empty($arrayDatos[$campo]) || $arrayDatos[$campo] == null) {
@@ -22,14 +20,12 @@ function HayNulos(array $camposNoNulos, array $arrayDatos): array
     return $nulos;
 }
 
-function existeValor(array $array, string $campo, mixed $valor): bool
-{
+function existeValor(array $array, string $campo, mixed $valor): bool{
         return in_array ($array[$campo],$valor);
 
 }
 
-function DibujarErrores($errores, $campo)
-{
+function DibujarErrores($errores, $campo){
     $cadena = "";
     if (isset($errores[$campo])) {
         $last = end($errores);
@@ -41,8 +37,7 @@ function DibujarErrores($errores, $campo)
     return $cadena;
 }
 
-function is_valid_email($str)
-{
+function is_valid_email($str){
     return (false !== filter_var($str, FILTER_VALIDATE_EMAIL));
 }
 
@@ -59,4 +54,4 @@ function fechaEs($fecha) {
     $meses_EN = array("January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December");
     $nombreMes = str_replace($meses_EN, $meses_ES, $mes);
     return $nombredia." ".$numeroDia." de ".$nombreMes." de ".$anio;
-    }
+}

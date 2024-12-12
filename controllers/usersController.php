@@ -7,6 +7,11 @@ class UsersController {
         $this->model = new UserModel();
     }
 
+    public function verificar($campo,$valor):bool{
+        $flag = $this->model->verificarCampo($campo,$valor);
+        return $flag;
+    }
+
     public function crear (array $arrayUser):void {
         try {
             $id=$this->model->insert ($arrayUser);

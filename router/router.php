@@ -1,5 +1,16 @@
 <?php
 
+function GenerarRutaJs(string $route):string{
+    $ultimo=strrpos($route,"/");
+    $ruta=substr($route,0, $ultimo);
+    $partes= (explode("/",$route));
+    $fichero= end($partes);
+    $partes2=explode(".",$fichero);
+    $nombreFichero= $partes2[0].".js";
+    $path=$ruta."/js/".$nombreFichero;
+    return $path;
+}
+
 function router (){
     $url = $_SERVER["REQUEST_URI"];
 

@@ -8,6 +8,20 @@ class UserModel{
         $this->conexion = db::conexion();
     }
 
+    public function verificarCampo($campo,$valor):bool{
+        $sql="SELECT usuario FROM users WHERE $campo = :valor";
+        $sentencia = $this->conexion->prepare($sql);
+        $arrayDatos = [":valor"=>$valor];
+        $resultado = $sentencia->execute($arrayDatos);
+        if(!$resultado) return false;
+        $user = $sentencia->fetch(PDO::FETCH_ASSOC);
+        if(!empty($user)){
+            return false;
+        }else{
+            return true;
+        }
+    }
+
     public function insert(array $user):?int{ //devuelve entero o null
         $sql="INSERT INTO users(usuario, password, name, email) VALUES (:usuario,:password,:name,:email);";
         $sentencia = $this->conexion->prepare($sql);
