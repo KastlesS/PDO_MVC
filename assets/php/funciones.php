@@ -9,6 +9,20 @@ function is_valid_dni(string $dni): bool{
     return false;
 }
 
+function validateNie($nif){
+    if (preg_match('/^[XYZT][0-9][0-9][0-9][0-9][0-9][0-9][0-9][A-Z0-9]/', $nif)) {
+      for ($i = 0; $i < 9; $i ++){
+        $num[$i] = substr($nif, $i, 1);
+      }
+
+      if ($num[8] == substr("TRWAGMYFPDXBNJZSQVHLCKE", substr(str_replace(array("X","Y","Z"), array("0","1","2"), $nif), 0, 8) % 23, 1)) {
+        return true;
+      } else {
+        return false;
+      }
+    }
+  }
+
 
 function HayNulos(array $camposNoNulos, array $arrayDatos): array{
     $nulos = [];
@@ -54,4 +68,19 @@ function fechaEs($fecha) {
     $meses_EN = array("January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December");
     $nombreMes = str_replace($meses_EN, $meses_ES, $mes);
     return $nombredia." ".$numeroDia." de ".$nombreMes." de ".$anio;
+}
+
+function validarNif($valor):bool {
+    $dni = '/^[0-9]';
+    $nie = '/^[XYZ]';
+
+    if(preg_match($dni,$valor)){
+        is_valid_dni($valor);
+    
+    } else if (preg_match($nie,$valor)){
+        validateNie($valor);
+
+    } else {
+
+    }
 }
